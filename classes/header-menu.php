@@ -3,20 +3,20 @@
 Class Cabecalho
 {
 
-    public function retornarHeader($pagina, $description, $keywords)
+    public function retornarHeader($pagina, $description, $keywords, $titulo)
     {
  
 ?>
  
-<!DOCTYPE html>
-<html lang="pt-br" >
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
    <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
       <meta name="description" content="<?php echo $description; ?>">
       <meta name="keywords" content="<?php echo $keywords; ?>">
-      <title>Advogados do Brasil - HOME </title>
+      <title><?php echo $titulo; ?></title>
       <!-- Bootstrap -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
       <!-- Style CSS -->
@@ -31,6 +31,7 @@ Class Cabecalho
       <link href="css/owl.carousel.min.css" rel="stylesheet">
       <link href="css/owl.theme.default.css" rel="stylesheet">
    </head>
+
    <body>
       <!-- header-start -->
       <div class="header-wrapper">

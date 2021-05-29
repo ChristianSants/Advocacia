@@ -37,7 +37,7 @@
    $cab = new Cabecalho();
 
                      //pagina - Description - Keywords
-   $cab->retornarHeader("cadastro", "cadastro", "cadastro");
+   $cab->retornarHeader("cadastro", "cadastro", "cadastro", "Advogados do Brasil | Cadastro");
 ?>
 	<form method="post">
 				<div class="form-group col-md-6">

@@ -6,7 +6,7 @@
    $cab = new Cabecalho();
 
                      //pagina - Description - Keywords
-   $cab->retornarHeader("index", "Home", "Home");
+   $cab->retornarHeader("index", "Home", "Home", "Advogados do Brasil | Home");
 ?>
 
       <div class="owl-carousel owl-theme">

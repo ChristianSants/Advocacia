@@ -40,7 +40,7 @@
    $cab = new Cabecalho();
 
                      //pagina - Description - Keywords
-   $cab->retornarHeader("editar", "editar", "editar");
+   $cab->retornarHeader("editar", "editar", "editar", "Advogados do Brasil | Editar Perfil");
 ?>
       <form method="post">
          <div class="form-group col-md-6">
