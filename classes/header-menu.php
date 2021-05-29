@@ -47,7 +47,7 @@ Class Cabecalho
                         include_once('advogados.php');
                         $user = new Advogados();
                         $status = $user->conferirSessao();
-                        if($status != 'Logado'){
+                        if($status != 'Logado' AND $status != 'Admin'){
                      ?>
                         <div id="navigation">
                             <ul>
@@ -96,7 +96,6 @@ Class Cabecalho
                             </ul>
                         </div>
                      <?php } ?>  
-
                   </div>
                </div>
                <div class="col-lg-2 hidden-md hidden-sm hidden-xs">
@@ -111,12 +110,14 @@ Class Cabecalho
                            <?php 
                               $user = new Advogados();
                               $status = $user->conferirSessao();
-                              if($status != 'Logado'){
-                              ?>
-                           <img src="images/of.png">
+                              if($status == 'Logado'){
+                           ?>
+                              <img src="images/on.png">
+                           <?php }else if($status == 'Admin'){ ?>
+                              <img src="images/admin.png">
                            <?php }else{ ?>
-                           <img src="images/on.png">
-                           <?php } ?>    
+                              <img src="images/of.png">
+                           <?php }?>    
                         </li>
                      </ul>
                   </div>

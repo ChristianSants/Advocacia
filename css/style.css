@@ -297,7 +297,7 @@ img { width: auto; max-width: 100%; height: auto; margin: 0; padding: 0; border:
 .top-bar { background-color: #f0efe8; border-bottom: #e3e2da 1px solid; padding-top: 7px; padding-bottom: 7px; }
 .connect-us { float: right; }
 .call-info { padding-top: 2px; padding-left: 60px; }
-.call-text { font-size: 20px; font-weight: 900; }
+.call-text { font-size: 17px; font-weight: 900; }
 .call-text strong { }
 .social { padding-top: 6px; }
 .social ul { float: right; }

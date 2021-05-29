@@ -1,4 +1,26 @@
+.espaco{
+    padding-bottom: 50px;
+}
+
 li.active a{
     color: #fff !important;
     background-color: #7d1c18;
 }
+
+.numero{
+    font-size: 17px !important;
+    font-weight: 900 !important;
+}
+
+div.social{
+    padding-top: 0 !important;
+}
+
+div.social img{
+    width: 50px !important;
+}
+
+div.form-group input{
+    width: 30% !important;
+}
+
