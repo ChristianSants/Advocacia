@@ -10,11 +10,14 @@
       <div class="container espaco">
             <div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12"  align="center">
                   <form class="form-inline" action="classes/logar.php" method="post">
-                        <div class="form-group col-md-12">  
+                        <br>
+                        <h1>Login</h1>
+                        <br>
+                        <div class="form-group col-md-12 login">  
                               <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="E-mail" name="email" >
                         </div>
                         <br>
-                        <div class="form-group col-md-12 mx-sm-3">
+                        <div class="form-group col-md-12 mx-sm-3 login">
                               <input type="password" class="form-control" id="inputPassword2" placeholder="Senha" name="senha" >
                         </div>
                         <br>

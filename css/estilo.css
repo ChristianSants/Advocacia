@@ -20,7 +20,7 @@ div.social img{
     width: 50px !important;
 }
 
-div.form-group input{
+div.form-group.login input{
     width: 30% !important;
 }
 

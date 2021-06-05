@@ -1,7 +1,7 @@
 <?php
 	
-	$login= $_POST['email'];
-	$pass= $_POST['senha'];
+	$login = $_POST['email'];
+	$pass = md5($_POST['senha']);
 
 	include_once('advogados.php');
 	$user = new Advogados();
@@ -11,7 +11,7 @@
 	if($status == 0)
 	{
 		//header('Location: login.html');
-		echo "<script>document.location.href='../login.html';</script>";
+		echo "<script>document.location.href='../login.php';</script>";
 	}
 	else
 	{

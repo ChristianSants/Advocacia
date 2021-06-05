@@ -144,7 +144,7 @@
             {
                 return 'Não está logado';   
             }
-            else if(@$_SESSION['logado'] == 1 AND @$_SESSION['email'] != 'chrisjobim@outlook.com') 
+            else if(@$_SESSION['logado'] == 1 AND @$_SESSION['email'] != 'admin@admin.com.br') 
             {
                 return 'Logado';
             }

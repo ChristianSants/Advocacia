@@ -60,8 +60,7 @@
                </thead>
                <tbody>
                   <?php
-                     $user = new Advogados();
-                     
+                                       
                      foreach($user->list() as $campo)
                      {
 

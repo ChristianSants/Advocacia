@@ -10,7 +10,7 @@
 		$email = $_POST['email'];
 		$sexo = $_POST['sexo'];
 		$dtNasc = $_POST['dtNasc'];
-		$senha = $_POST['senha'];
+		$senha = md5($_POST['senha']);
 		$especialidade = $_POST['especialidade'];
 		$oab = $_POST['oab'];
 		
@@ -39,75 +39,81 @@
                      //pagina - Description - Keywords
    $cab->retornarHeader("cadastro", "cadastro", "cadastro", "Advogados do Brasil | Cadastro");
 ?>
-	<form method="post">
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<form method="post">
+				<br><br>
+				<h1 class="text-center">Cadastre-se</h1>
+				<br>
 				<div class="form-group col-md-6">
-							  <label for="inputCity" class="col-form-label">Nome Completo</label>
-							  <input type="text" class="form-control" id="nome" placeholder="Nome Sobrenome" name="nome" value="<?php echo @$campo['nome']; ?>" >
+					<label for="inputCity" class="col-form-label">Nome Completo</label>
+					<input type="text" class="form-control" id="nome" placeholder="Nome Sobrenome" name="nome" value="<?php echo @$campo['nome']; ?>" >
 				</div>
 				
-		<div class="form-group col-md-6">
-      
-					  <label for="inputCity" class="col-form-label">Data de nascimento</label>
-					  <input type="date" class="form-control" id="datanasc" name="dtNasc" value="<?php echo @$campo['dtNasc']; ?>" >
-         </div>  
+				<div class="form-group col-md-6">
+					<label for="inputCity" class="col-form-label">Data de nascimento</label>
+					<input type="date" class="form-control" id="datanasc" name="dtNasc" value="<?php echo @$campo['dtNasc']; ?>" >
+				</div>  
 		 
-	  <div class="form-group col-md-6">
-			  <label for="inputCity" class="col-form-label">OAB</label>
-			  <input type="text" class="form-control" id="oab"  placeholder="99999999" name="oab" value="<?php echo @$campo['oab']; ?>">
-		</div>    
+				<div class="form-group col-md-6">
+					<label for="inputCity" class="col-form-label">OAB</label>
+					<input type="text" class="form-control" id="oab"  placeholder="99999999" name="oab" value="<?php echo @$campo['oab']; ?>">
+				</div>    
 		
-  <div class="form-row">
-		<div class="form-group col-md-6">
-		
-			  <label for="inputZip" class="col-form-label">CPF</label>
-			  <input type="text" class="form-control"   placeholder="999.999.999-99" name="cpf" maxlength="11" value="<?php echo @	$campo['cpf']; ?>">
-		</div>
-		
-		<div class="form-group col-md-6">
-			  <label for="inputEmail4" class="col-form-label">E-mail</label>
-			  <input type="email" class="form-control" id="email" placeholder="exemplo@hotmail.com" name="email" value="<?php echo @	$campo['email']; ?>">
-		</div>
-		
-		<div class="form-group col-md-6">
-			  <label for="inputPassword4" class="col-form-label">Senha</label>
-			  <input type="password" class="form-control" id="inputPassword4" name="senha"  placeholder="Senha"  value="<?php echo @	$campo['senha']; ?>" >
-		</div>
-  </div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputZip" class="col-form-label">CPF</label>
+						<input type="text" class="form-control"   placeholder="999.999.999-99" name="cpf" maxlength="11" value="<?php echo @	$campo['cpf']; ?>">
+					</div>
+						
+					<div class="form-group col-md-6">
+						<label for="inputEmail4" class="col-form-label">E-mail</label>
+						<input type="email" class="form-control" id="email" placeholder="exemplo@hotmail.com" name="email" value="<?php echo @	$campo['email']; ?>">
+					</div>
+						
+					<div class="form-group col-md-6">
+						<label for="inputPassword4" class="col-form-label">Senha</label>
+						<input type="password" class="form-control" id="inputPassword4" name="senha"  placeholder="Senha"  value="<?php echo @	$campo['senha']; ?>" >
+					</div>
+				</div>
   
-  <div class="form-group">
-		<label for="inputAddress" class="col-form-label">Endereço</label>
-		<input type="text" class="form-control" id="endereco" placeholder="R. Exemplo N 59 Porto Alegre" name="endereco" value="<?php echo @	$campo['endereco']; ?>" >
-  </div>
-  <div class="form-row">
-    
-	<div class="form-group">
-		<label for="inputAddress2" class="col-form-label">Telefone</label>
-		<input type="numeric" class="form-control" id="inputAddress2" placeholder="(55) 51 9 9999 9999" name="telefone" value="<?php echo @	$campo['telefone']; ?>" >
-  </div>
+				<div class="form-group col-md-6">
+					<label for="inputAddress" class="col-form-label">Endereço</label>
+					<input type="text" class="form-control" id="endereco" placeholder="R. Exemplo N 59 Porto Alegre" name="endereco" value="<?php echo @	$campo['endereco']; ?>" >
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="inputAddress2" class="col-form-label">Telefone</label>
+						<input type="numeric" class="form-control" id="inputAddress2" placeholder="(55) 51 9 9999 9999" name="telefone" value="<?php echo @	$campo['telefone']; ?>" >
+					</div>
+				</div>
   
-  <div class="form-group">
-    
-	<label for="inputAddress2" class="col-form-label">Especialidade:</label>
-							
-							<select name="especialidade">
-							
-								<option value="Vara de familia">Vara de Familia </option>
-								<option value="compliance e ética">Compliance e ética</option>
-								<option value="tributarista">Tributarista</option>
-								
-							</select>
-					
-  </div>
-    
-	<label for="inputCity" class="col-form-label">Sexo</label><br>
-      <input type="radio"  id="sexo" name="sexo" value="M" > Masculino<br>       
-	    <input type="radio"  id="sexo" name="sexo" value="F" > Feminino<BR>
-		<br>
-  </div>
-  <br>
+				<div class="form-group col-md-6">
+					<label for="inputAddress2" class="col-form-label">Especialidade</label><br>
 
-  <input type="submit" name="Cadastrar" value="Cadastrar"/>
+					<select name="especialidade">
+						<option value="Vara de familia">Vara de Familia </option>
+						<option value="compliance e ética">Compliance e ética</option>
+						<option value="tributarista">Tributarista</option>
+					</select>
+				</div>
 
-</form>
+				<div class="form-group col-md-6">
+					<label for="inputCity" class="col-form-label">Sexo</label><br>
+					<input type="radio"  id="sexo" name="sexo" value="M" > Masculino<br>       
+					<input type="radio"  id="sexo" name="sexo" value="F" > Feminino<BR>
+					<br>
+				</div>
+
+				<input type="submit" name="Cadastrar" value="Cadastrar"/>
+
+			</form>
+  		</div>
+	</div>
+</div>
+<br>
 	
 <?php include('classes/footer.php');?>   
