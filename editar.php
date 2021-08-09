@@ -1,47 +1,48 @@
 <?php
+
    include_once('classes/advogados.php');
    session_start();
    
    $user = new Advogados();
    
-   foreach($user->busca("SELECT * FROM advogados WHERE email = '".$_SESSION['email']."'ORDER BY id ASC") as $campo)
+   if(!isset($_GET['id']) && isset($_SESSION['email']) ){
+      foreach($user->busca("SELECT * FROM advogados WHERE email = '".$_SESSION['email']."'ORDER BY id ASC") as $campo);
+   }else if(isset($_GET['id']) && $user->conferirSessao() == 'Admin'){
+      foreach($user->busca("SELECT * FROM advogados WHERE id = ' ".$_GET['id']." ' ") as $campo);
+   }
+
+
+if(isset($_POST['Editar'])){//se clicar em 'Editar', edita o produto e mostra o botão EDITAR
    
-     if(isset($_POST['Editar']))
-     {//se clicar em 'Editar', edita o produto e mostra o botão EDITAR
-   
-        $nome = $_POST['nome'];//pega o componente 'nome' do formulario
-        $telefone = $_POST['telefone'];//pega o componente 'descricao' do formulario
-        $endereco = $_POST['endereco'];
-        $cpf = $_POST['cpf'];
-        $email = $_POST['email'];
-        $sexo = $_POST['sexo'];
-        $dtNasc = $_POST['dtNasc'];
-        $senha = $_POST['senha'];
-        $especialidade = $_POST['especialidade'];
-        $oab = $_POST['oab'];
+   $nome = $_POST['nome'];//pega o componente 'nome' do formulario
+   $telefone = $_POST['telefone'];//pega o componente 'descricao' do formulario
+   $endereco = $_POST['endereco'];
+   $cpf = $_POST['cpf'];
+   $email = $_POST['email'];
+   $sexo = $_POST['sexo'];
+   $dtNasc = $_POST['dtNasc'];
+   $senha = $_POST['senha'];
+   $especialidade = $_POST['especialidade'];
+   $oab = $_POST['oab'];
         
-        $status = $user->update($nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $especialidade, $oab, $_SESSION['email']);
-        //header("Location: index.php");//Comando javascript para redirecionar para index.php
-        if($status != 1)
-        {
-            echo "<script>alert('Erro, tente novamente!');</script>";
-        }
-        else
-        {
-            echo "<script>alert('Dados alterados com Sucesso!'); document.location.href='index.php';</script>";
-        }
-     } 
+   $status = $user->update($nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $especialidade, $oab, $_SESSION['email']);
+   //header("Location: index.php");//Comando javascript para redirecionar para index.php
+   if($status != 1){
+      echo "<script>alert('Erro, tente novamente!');</script>";
+   }else{
+      echo "<script>alert('Dados alterados com Sucesso!'); document.location.href='index.php';</script>";
+   }
+} 
 
-   ?>
-
-<?php 
-
-   include('classes/header-menu.php');
-   $cab = new Cabecalho();
+include('classes/header-menu.php');
+$cab = new Cabecalho();
 
                      //pagina - Description - Keywords
-   $cab->retornarHeader("editar", "editar", "editar", "Advogados do Brasil | Editar Perfil");
+$cab->retornarHeader("editar", "editar", "editar", "Advogados do Brasil | Editar Perfil");
+
 ?>
+
+
       <form method="post">
          <div class="form-group col-md-6">
             <label for="inputCity" class="col-form-label">Nome Completo</label>

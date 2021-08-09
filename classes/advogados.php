@@ -89,13 +89,13 @@
             return $prepare->rowCount();
         }
 
-        public function delete($email) : int
+        public function delete($id) : int
         {
-            $sql = 'DELETE FROM advogados WHERE email = ?';
+            $sql = 'DELETE FROM advogados WHERE id = ?';
 
             $prepare = $this->conexao->prepare($sql); 
 
-            $prepare->bindParam(1, $email);
+            $prepare->bindParam(1, $id);
             $prepare->execute();
 
             return $prepare->rowCount();

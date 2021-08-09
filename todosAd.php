@@ -52,7 +52,7 @@
                      <th>OAB</th>
                      <th>Telefone</th>
                      <th>Especialidade</th>
-                     <th>Excluir</th>
+                     <th>Administrator</th>
 
                   <?php } ?>  
 
@@ -88,8 +88,10 @@
                      <td><?php echo $campo['oab'];?></td>
                      <td><?php echo $campo['telefone'];?></td>
                      <td><?php echo $campo['especialidade'];?></td>
-                     <td><form method="POST"><input type="submit" name="Excluir" value="Excluir"/></form></td>
-                  
+                     <!--<td><form method="POST"><input type="submit" name="Excluir" value="Excluir"/></form></td>--> 
+                     <td><a href="editar.php?id=<?=$campo['id']?>"><i class="fa fa-pencil-square"></i></a>
+                         <a href="apagar.php?id=<?=$campo['id']?>"><i class="fa fa-times-circle"></i></a></td>
+                         
                   <?php } ?>  
 
                   </tr>
