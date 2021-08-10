@@ -5,7 +5,19 @@
 
                      //pagina - Description - Keywords
    $cab->retornarHeader("advogados", "advogados", "advogados", "Advogados do Brasil | Todos Advogados");
-?>
+?> 
+
+      <script>
+
+         var editarPop = (id) => {
+            varWindow = window.open (
+               'editar.php?id='+id, 
+               'popup',
+               "width=1000, height=500, top=150, left=100, scrollbars=no ")
+         }
+
+      </script>
+
       <div class="owl-carousel owl-theme">
          <div class="item">
             <img src="./images/tribunal.jpg" class="img-responsive" alt="">
@@ -89,7 +101,7 @@
                      <td><?php echo $campo['telefone'];?></td>
                      <td><?php echo $campo['especialidade'];?></td>
                      <!--<td><form method="POST"><input type="submit" name="Excluir" value="Excluir"/></form></td>--> 
-                     <td><a href="editar.php?id=<?=$campo['id']?>"><i class="fa fa-pencil-square"></i></a>
+                     <td><a><i class="fa fa-pencil-square" onclick="editarPop(<?= $campo['id'] ?>)" ></i></a>
                          <a href="apagar.php?id=<?=$campo['id']?>"><i class="fa fa-times-circle"></i></a></td>
                          
                   <?php } ?>  
