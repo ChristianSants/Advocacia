@@ -44,9 +44,9 @@
             return $produtos;
         }
 
-        public function insert( $nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $especialidade, $oab) : int
+        public function insert( $nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $oab) : int
         {
-            $sql = 'INSERT INTO advogados(nome, telefone, endereco, cpf, email, sexo, dtNasc, senha, especialidade, oab) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+            $sql = 'INSERT INTO advogados(nome, telefone, endereco, cpf, email, sexo, dtNasc, senha, oab) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
             //$sql = 'INSERT INTO advogados(nome, telefone, endereco, cpf, email, sexo, dtNasc, senha, especialidade, oab) VALUES('.$nome.','. $telefone.','. $endereco.','. $cpf.','. $email.','. $sexo.','. $dtNasc.','. $senha.','. $especialidade.','. $oab.')';
 
             $prepare = $this->conexao->prepare($sql);
@@ -59,16 +59,15 @@
             $prepare->bindParam(6, $sexo);
             $prepare->bindParam(7, $dtNasc);
             $prepare->bindParam(8, $senha);
-            $prepare->bindParam(9, $especialidade);
-            $prepare->bindParam(10, $oab); 
+            $prepare->bindParam(9, $oab); 
             $prepare->execute();
 
             return $prepare->rowCount();
         }
 
-        public function update(string $nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $especialidade, $oab, $emailAtual) : int
+        public function update(string $nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $oab, $emailAtual) : int
         {
-            $sql = 'UPDATE advogados SET nome = ?, telefone = ?, endereco = ?, cpf = ?, email = ?, sexo = ?, dtNasc = ?, senha = ?, especialidade = ?, oab = ? WHERE email = ?';
+            $sql = 'UPDATE advogados SET nome = ?, telefone = ?, endereco = ?, cpf = ?, email = ?, sexo = ?, dtNasc = ?, senha = ?, oab = ? WHERE email = ?';
 
             $prepare = $this->conexao->prepare($sql); 
 
@@ -80,9 +79,8 @@
             $prepare->bindParam(6, $sexo);
             $prepare->bindParam(7, $dtNasc);
             $prepare->bindParam(8, $senha);
-            $prepare->bindParam(9, $especialidade);
-            $prepare->bindParam(10, $oab);
-            $prepare->bindParam(11, $emailAtual);
+            $prepare->bindParam(9, $oab);
+            $prepare->bindParam(10, $emailAtual);
 
             $prepare->execute();
 
@@ -115,27 +113,6 @@
             return $prepare->rowCount();
         }
 
-        public function listFiltroEspecialidade($opcao) : array
-        {
-            //$sql = 'SELECT * FROM advogados WHERE especialidade = "Vara de familia" ORDER BY id ASC';
-            $sql = 'SELECT * FROM advogados WHERE especialidade = "'.$opcao.'" ORDER BY id ASC';
-            //$sql = 'SELECT * FROM advogados WHERE especialidade = "?" ORDER BY id ASC';
-
-            $produtos = [];
-
-            //$prepare = $this->conexao->prepare($sql); 
-
-            //$prepare->bindParam(1, $opcao);
-            //$prepare->execute();
-
-            foreach($this->conexao->query($sql) as $valor)
-            {
-                array_push($produtos, $valor);
-            }
-
-            return $produtos;
-        }
-
         public function conferirSessao() : ?string
         {   
             @session_start();
@@ -159,11 +136,11 @@
         {
             $sql = $query;
 
-            $produtos = [];
+            
 
             foreach($this->conexao->query($sql) as $valor)
             {
-                array_push($produtos, $valor);
+                $produtos = $valor;
             }
 
             return $produtos;
