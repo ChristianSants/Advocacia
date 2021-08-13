@@ -1,8 +1,9 @@
 <?php
 
   include_once('classes/advogados.php');
+  include_once('classes/advogadosEspecialidade.php');
 
-	if(isset($_POST['Cadastrar'])){//se clicar em 'Cadastrar', Cadastra o produto e mostra o botão CADASTRAR
+	if(isset($_POST['Cadastrar'])){
 		$nome = $_POST['nome'];//pega o componente 'nome' do formulario
 		$telefone = $_POST['telefone'];//pega o componente 'descricao' do formulario
 		$endereco = $_POST['endereco'];
@@ -11,23 +12,31 @@
 		$sexo = $_POST['sexo'];
 		$dtNasc = $_POST['dtNasc'];
 		$senha = md5($_POST['senha']);
-		$especialidade = $_POST['especialidade'];
 		$oab = $_POST['oab'];
 		
 		$user = new Advogados();
-		$status = $user->insert($nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $especialidade, $oab);
+		$status = $user->insert($nome, $telefone, $endereco, $cpf, $email, $sexo, $dtNasc, $senha, $oab);
+
 		
-    if(!$status)
-    {
+		
+		
+    if(!$status){
       echo 'ERRO';
-    }
-    else
-    {
-      //header("Location:login.php");//Comando javascript para redirecionar para index.php
-      echo "<script>document.location.href='login.php';</script>";
+    }else{
+
+	  $especialidade = array( $_POST['especialidade'] );
+	  $advEspec = new AdvEspec();
+	  $newStats = $advEspec->insert($email, $especialidade);
+	 
+	  if(!$newStats){
+		echo 'ERRO';
+	  }else{
+		echo "<script>document.location.href='login.php';</script>";
+	  }
+
     }
 		
-	}
+}
 
 ?>
 
@@ -94,11 +103,10 @@
 				<div class="form-group col-md-6">
 					<label for="inputAddress2" class="col-form-label">Especialidade</label><br>
 
-					<select name="especialidade">
-						<option value="Vara de familia">Vara de Familia </option>
-						<option value="compliance e ética">Compliance e ética</option>
-						<option value="tributarista">Tributarista</option>
-					</select>
+					<input type="checkbox" name="especialidade" id="especialidade" value="1">Vara de Familia <br>
+					<input type="checkbox" name="especialidade" id="especialidade" value="2">Compliance e ética <br>
+					<input type="checkbox" name="especialidade" id="especialidade" value="3">Tributarista <br>
+				
 				</div>
 
 				<div class="form-group col-md-6">
