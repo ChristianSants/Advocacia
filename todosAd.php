@@ -39,7 +39,7 @@
       <div class="container">
          <h1 class="page-header">Todos Advogados</h1>
          <div class="table-responsive">
-            <table class="table table-striped table-bordered table-hover">
+            <table class="sortable table table-striped table-bordered table-hover">
                <thead>
                   <tr>
                               
@@ -49,7 +49,7 @@
                      if($status != 'Admin'){
                   ?>
                       
-                     <th>ID</th>
+                     <th class=" sorttable_sorted">ID<span id="sorttable_sortfwdind">&nbsp;▾</span></th>
                      <th>Nome </th>
                      <th>E-Mail</th>
                      <th>OAB</th>
@@ -58,7 +58,7 @@
 
                   <?php }else{ ?>
 
-                     <th>ID</th>
+                     <th class=" sorttable_sorted">ID<span id="sorttable_sortfwdind">&nbsp;▾</span></th>
                      <th>Nome </th>
                      <th>E-Mail</th>
                      <th>OAB</th>
@@ -73,7 +73,7 @@
                <tbody>
                   <?php
                                        
-                     foreach($user->list() as $campo)
+                     foreach($user->list('id') as $campo)
                      {
 
                      ?>	  
@@ -112,4 +112,8 @@
             </table>
          </div>
       </div>
+
+       <!-- Ordenar Tabela -->
+       <script type="text/javascript" src="https://kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+
 <?php include('classes/footer.php');?>   

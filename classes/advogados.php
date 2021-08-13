@@ -29,9 +29,9 @@
             return $this->conexao;
         }
 
-        public function list() : array
+        public function list($campo) : array
         {
-            $sql = 'SELECT * FROM advogados ORDER BY id ASC';
+            $sql = 'SELECT * FROM advogados ORDER BY '.$campo.' ASC';
 
             $produtos = [];
 
