@@ -136,11 +136,11 @@
         {
             $sql = $query;
 
-            
+            $produtos = [];
 
             foreach($this->conexao->query($sql) as $valor)
             {
-                $produtos = $valor;
+                array_push($produtos, $valor);
             }
 
             return $produtos;
